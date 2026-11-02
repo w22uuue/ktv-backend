@@ -1,0 +1,49 @@
+# Copy outside all repositories, then supply secrets through the service environment.
+server:
+  address: 127.0.0.1
+  port: 8080
+  forward-headers-strategy: native
+spring:
+  datasource:
+    druid:
+      master:
+        url: ${DB_URL}
+        username: ${DB_USER}
+        password: ${DB_PASSWORD}
+  redis:
+    host: ${REDIS_HOST:127.0.0.1}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD}
+    timeout: 3s
+token:
+  secret: ${JWT_SECRET}
+ktv:
+  production: true
+  demo-payment-enabled: false
+  bootstrap-admin-password: ${KTV_BOOTSTRAP_ADMIN_PASSWORD:}
+  bootstrap-supplier-password: ${KTV_BOOTSTRAP_SUPPLIER_PASSWORD:}
+  upload-path: ${KTV_UPLOAD_PATH}
+  customer-url: ${KTV_CUSTOMER_URL}
+  public-api-url: ${KTV_PUBLIC_API_URL}
+  # The service reflects only origins from this allow-list. The nginx proxy
+  # must not override it with a single fixed Access-Control-Allow-Origin.
+  allowed-origins: ${KTV_ALLOWED_ORIGINS:https://ktv.okam.top,https://ktvht.okam.top,http://localhost:5173,http://localhost:5174,http://127.0.0.1:5173,http://127.0.0.1:5174}
+  unpaid-timeout-minutes: 15
+  wechat:
+    app-id: ${KTV_WECHAT_APP_ID:}
+    app-secret: ${KTV_WECHAT_APP_SECRET:}
+    merchant-id: ${KTV_WECHAT_MERCHANT_ID:}
+    private-key-path: ${KTV_WECHAT_PRIVATE_KEY_PATH:}
+    public-key-path: ${KTV_WECHAT_PUBLIC_KEY_PATH:}
+    public-key-id: ${KTV_WECHAT_PUBLIC_KEY_ID:}
+    serial-number: ${KTV_WECHAT_SERIAL_NUMBER:}
+    api-v3-key: ${KTV_WECHAT_API_V3_KEY:}
+    code-page: pages/index/index
+    env-version: ${KTV_WECHAT_ENV_VERSION:trial}
+ruoyi:
+  profile: ${RUOYI_UPLOAD_PATH}
+swagger:
+  enabled: false
+logging:
+  level:
+    com.ruoyi: info
