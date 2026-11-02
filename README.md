@@ -51,7 +51,7 @@ $env:JWT_SECRET = Read-Secret 'JWT secret: provide a random secret of at least 3
 $env:REDIS_HOST = 'localhost'
 $env:REDIS_PORT = '6379'
 # Redis 使用密码时，设置 REDIS_PASSWORD
-$env:KTV_BOOTSTRAP_ADMIN_PASSWORD = Read-Secret 'KTV administrator initial password (12+ characters)'
+$env:KTV_BOOTSTRAP_ADMIN_PASSWORD = Read-Secret 'KTV administrator initial password (8+ characters)'
 $env:KTV_BOOTSTRAP_SUPPLIER_PASSWORD = Read-Secret 'Supplier initial password (12+ characters)'
 mvn -pl ruoyi-admin -am clean package -DskipTests
 ```

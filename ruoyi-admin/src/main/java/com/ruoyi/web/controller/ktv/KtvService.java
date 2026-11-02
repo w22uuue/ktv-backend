@@ -184,7 +184,7 @@ public class KtvService {
         jdbc.execute("CREATE TABLE IF NOT EXISTS ktv_order (id BIGINT PRIMARY KEY,customer_id VARCHAR(80) NOT NULL,supplier_id VARCHAR(40) NOT NULL,room VARCHAR(12) NOT NULL DEFAULT '',status VARCHAR(20) NOT NULL,paid BOOLEAN NOT NULL,request_key VARCHAR(80),payload LONGTEXT NOT NULL,UNIQUE(customer_id,request_key),INDEX(customer_id,id),INDEX(supplier_id,status,id)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
         migrateRoomIndex();
         if(jdbc.queryForObject("SELECT COUNT(*) FROM ktv_shared_state",Integer.class)>0) {migrateOrders();return;}
-        require(PasswordPolicy.valid(adminPassword) && PasswordPolicy.valid(supplierPassword),503,"首次启动请配置有效的 KTV 管理员及食堂初始密码");
+        require(PasswordPolicy.validAdmin(adminPassword) && PasswordPolicy.valid(supplierPassword),503,"首次启动请配置有效的 KTV 管理员及食堂初始密码");
         JSONArray products=new JSONArray();
         String[][] rows={{"chicken","宫保鸡丁饭","主食","32","经典川味，香辣过瘾"},{"beef","黑椒牛柳饭","主食","38","黑椒浓郁，牛肉鲜嫩"},{"bites","香酥鸡米花","小吃","22","外酥里嫩，香气四溢"},{"noodle","番茄牛腩面","主食","36","浓郁番茄，软烂牛腩"}};
         for(String[] row:rows) products.add(object("id",row[0],"name",row[1],"category",row[2],"price",Integer.valueOf(row[3]),"image",row[0],"description",row[4],"onSale",true,"version",1));
