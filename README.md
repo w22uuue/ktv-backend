@@ -26,9 +26,9 @@ KTV 包厢点餐系统的 Java 后端，为 ktv-app 提供共享点餐业务，�
 
 | 项目 | 说明 | GitHub |
 | --- | --- | --- |
-| ktv-backend | 后端 API、共享订单与权限服务 | [ktv-backend](https://github.com/jiangyi3265/ktv-backend) |
-| ktv-admin | PC 运营管理后台 | [ktv-admin](https://github.com/jiangyi3265/ktv-admin) |
-| ktv-app | 顾客、食堂配送及 KTV 移动管理客户端 | [ktv-app](https://github.com/jiangyi3265/ktv-app) |
+| ktv-backend | 后端 API、共享订单与权限服务 | [ktv-backend](https://github.com/w22uuue/ktv-backend) |
+| ktv-admin | PC 运营管理后台 | [ktv-admin](https://github.com/w22uuue/ktv-admin) |
+| ktv-app | 顾客、食堂配送及 KTV 移动管理客户端 | [ktv-app](https://github.com/w22uuue/ktv-app) |
 
 ## 快速启动
 
@@ -110,4 +110,5 @@ mvn -pl ruoyi-admin -am verify
 ## 来源与许可证
 
 基于 [RuoYi-Vue](https://gitee.com/y_project/RuoYi-Vue) 开发，保留原项目 MIT 许可证与作者声明，详见 [LICENSE](LICENSE)。
+
 
